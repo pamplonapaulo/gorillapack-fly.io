@@ -4,7 +4,8 @@
   "info": {
     "singularName": "melhor-envio",
     "pluralName": "melhor-envios",
-    "displayName": "Melhor Envio"
+    "displayName": "Melhor Envio",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -24,10 +25,10 @@
       "type": "string"
     },
     "access_token": {
-      "type": "string"
+      "type": "text"
     },
     "refresh_token": {
-      "type": "string"
+      "type": "text"
     }
   }
 }
