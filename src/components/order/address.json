@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_order_addresses",
+  "info": {
+    "displayName": "address"
+  },
+  "options": {},
+  "attributes": {
+    "logradouro": {
+      "type": "string",
+      "required": true
+    },
+    "numero": {
+      "type": "string",
+      "required": false,
+      "regex": "\\D*\\s*\\d*"
+    },
+    "complemento": {
+      "type": "string",
+      "regex": "\\D*\\s*\\d*"
+    },
+    "bairro": {
+      "type": "string"
+    },
+    "municipio": {
+      "type": "string",
+      "required": true
+    },
+    "uf": {
+      "type": "string",
+      "required": true
+    },
+    "cep": {
+      "type": "string",
+      "required": true
+    },
+    "nome": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

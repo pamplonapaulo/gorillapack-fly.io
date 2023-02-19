@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "packs",
+  "info": {
+    "singularName": "pack",
+    "pluralName": "packs",
+    "displayName": "Pack",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "Description": {
+      "type": "string",
+      "maxLength": 75,
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a leo.",
+      "minLength": 10
+    },
+    "ExtraDiscount": {
+      "type": "decimal",
+      "default": 0.3,
+      "max": 0.9,
+      "min": 0
+    },
+    "Benefits": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pack.benefits",
+      "max": 5
+    },
+    "Item": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pack.item",
+      "min": 1,
+      "required": true
+    }
+  }
+}

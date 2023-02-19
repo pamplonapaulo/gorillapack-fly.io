@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_order_deliveries",
+  "info": {
+    "displayName": "delivery",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "fee": {
+      "type": "string",
+      "required": true
+    },
+    "company": {
+      "type": "string",
+      "required": true
+    },
+    "packingDetails": {
+      "type": "json"
+    },
+    "expectedTravelingDays": {
+      "type": "integer"
+    },
+    "expectedDispatchDays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "order.expected-dispatch-days",
+      "required": true
+    },
+    "expectedArrivalDays": {
+      "type": "component",
+      "repeatable": true,
+      "component": "order.expected-arrival-days",
+      "required": true
+    }
+  }
+}

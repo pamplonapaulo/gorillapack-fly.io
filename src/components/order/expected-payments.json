@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_order_expected_payments",
+  "info": {
+    "displayName": "expectedPayments"
+  },
+  "options": {},
+  "attributes": {
+    "monthsMultiplier": {
+      "type": "integer"
+    },
+    "finalValue": {
+      "type": "biginteger",
+      "required": true
+    },
+    "absoluteDiscountApplied": {
+      "type": "biginteger",
+      "required": true,
+      "default": "0"
+    },
+    "contentCostBeforeDiscount": {
+      "type": "biginteger",
+      "required": true
+    },
+    "finalValueWithCoupon": {
+      "type": "biginteger",
+      "required": false
+    },
+    "absoluteCouponDiscountApplied": {
+      "type": "biginteger"
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment"
+    }
+  }
+}

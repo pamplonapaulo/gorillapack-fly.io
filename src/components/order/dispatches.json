@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_order_dispatches",
+  "info": {
+    "displayName": "dispatches"
+  },
+  "options": {},
+  "attributes": {
+    "expected": {
+      "type": "integer"
+    },
+    "accomplished": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

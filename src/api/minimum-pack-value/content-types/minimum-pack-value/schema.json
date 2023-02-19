@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "minimum_pack_values",
+  "info": {
+    "singularName": "minimum-pack-value",
+    "pluralName": "minimum-pack-values",
+    "displayName": "Minimum Pack Value"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "MinimumValue": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}

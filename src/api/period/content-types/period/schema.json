@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "periods",
+  "info": {
+    "singularName": "period",
+    "pluralName": "periods",
+    "displayName": "Period"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Type": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Multiplier": {
+      "type": "integer",
+      "required": true,
+      "unique": true
+    },
+    "Discount": {
+      "type": "decimal",
+      "required": true
+    }
+  }
+}

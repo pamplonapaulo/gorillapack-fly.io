@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_price_prices",
+  "info": {
+    "displayName": "prices"
+  },
+  "options": {},
+  "attributes": {
+    "mensal": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prices.mensal",
+      "required": true
+    },
+    "trimestral": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prices.trimestral",
+      "required": true
+    },
+    "semestral": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prices.semestral",
+      "required": true
+    },
+    "anual": {
+      "type": "component",
+      "repeatable": false,
+      "component": "prices.anual",
+      "required": true
+    }
+  }
+}

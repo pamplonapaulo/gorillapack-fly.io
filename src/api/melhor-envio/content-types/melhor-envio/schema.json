@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "melhor_envios",
+  "info": {
+    "singularName": "melhor-envio",
+    "pluralName": "melhor-envios",
+    "displayName": "Melhor Envio"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "client_id": {
+      "type": "string"
+    },
+    "client_secret": {
+      "type": "string"
+    },
+    "authorization_code": {
+      "type": "string"
+    },
+    "redirect_uri": {
+      "type": "string"
+    },
+    "access_token": {
+      "type": "string"
+    },
+    "refresh_token": {
+      "type": "string"
+    }
+  }
+}

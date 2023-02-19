@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupons",
+  "info": {
+    "singularName": "coupon",
+    "pluralName": "coupons",
+    "displayName": "Coupon"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isActive": {
+      "type": "boolean",
+      "default": false
+    },
+    "expiration": {
+      "type": "date"
+    },
+    "notTaken": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "percentage",
+        "absoluteValue"
+      ],
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "discount": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    },
+    "takenBeforePayment": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "takenAfterPayment": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    }
+  }
+}

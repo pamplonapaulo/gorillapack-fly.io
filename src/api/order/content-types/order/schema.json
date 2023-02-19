@@ -1,0 +1,93 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "period": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::period.period"
+    },
+    "snack": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pack.item",
+      "required": true
+    },
+    "pack": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pack.pack"
+    },
+    "deliveries": {
+      "type": "component",
+      "repeatable": true,
+      "component": "order.delivery",
+      "required": true
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "required": true,
+      "component": "order.address"
+    },
+    "coupon": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::coupon.coupon"
+    },
+    "expectedPayments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "order.expected-payments",
+      "required": true
+    },
+    "isConfirmed": {
+      "type": "boolean",
+      "default": false
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "deactivated": {
+      "type": "boolean",
+      "default": false
+    },
+    "deactivationAuthor": {
+      "type": "enumeration",
+      "enum": [
+        "admin",
+        "customer",
+        "timeOut"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
+    },
+    "paymentIntent": {
+      "type": "string",
+      "required": true
+    },
+    "cardBrand": {
+      "type": "string"
+    },
+    "cardLast4digits": {
+      "type": "string",
+      "maxLength": 4,
+      "minLength": 4
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "free_deliveries",
+  "info": {
+    "singularName": "free-delivery",
+    "pluralName": "free-deliveries",
+    "displayName": "Free Delivery"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "MinimumTicket": {
+      "type": "integer",
+      "required": true,
+      "default": 149
+    }
+  }
+}

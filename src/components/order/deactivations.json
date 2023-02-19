@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_order_deactivations",
+  "info": {
+    "displayName": "deactivations"
+  },
+  "options": {},
+  "attributes": {
+    "byCustomer": {
+      "type": "boolean",
+      "default": false
+    },
+    "byGorilla": {
+      "type": "boolean",
+      "default": false
+    },
+    "byTimeOut": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

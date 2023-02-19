@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_prices_anuals",
+  "info": {
+    "displayName": "anual"
+  },
+  "options": {},
+  "attributes": {
+    "centavos": {
+      "type": "biginteger",
+      "required": true
+    },
+    "priceId": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

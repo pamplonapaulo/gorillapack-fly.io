@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_prices_mensals",
+  "info": {
+    "displayName": "mensal"
+  },
+  "options": {},
+  "attributes": {
+    "centavos": {
+      "type": "biginteger",
+      "required": true
+    },
+    "priceId": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    }
+  }
+}

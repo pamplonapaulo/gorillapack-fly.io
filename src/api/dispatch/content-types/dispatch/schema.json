@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "dispatches",
+  "info": {
+    "singularName": "dispatch",
+    "pluralName": "dispatches",
+    "displayName": "Dispatch"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Day1": {
+      "type": "string",
+      "regex": "^(?:[1-9]|[1][0-9]|2[0-8])$"
+    },
+    "Day2": {
+      "type": "string",
+      "regex": "^(?:[1-9]|[1][0-9]|2[0-8])$"
+    },
+    "SafetyTimeSpan": {
+      "type": "integer",
+      "max": 9,
+      "min": 0
+    }
+  }
+}
