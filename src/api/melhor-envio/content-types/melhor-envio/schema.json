@@ -19,7 +19,7 @@
       "type": "string"
     },
     "authorization_code": {
-      "type": "string"
+      "type": "text"
     },
     "redirect_uri": {
       "type": "string"
