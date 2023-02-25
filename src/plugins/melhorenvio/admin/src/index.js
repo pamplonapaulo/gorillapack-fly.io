@@ -32,17 +32,15 @@ export default {
       id: pluginId,
       initializer: Initializer,
       isReady: false,
-      name,
+      name
     });
   },
 
   bootstrap(app) {},
   async registerTrads({ locales }) {
     const importedTrads = await Promise.all(
-      locales.map((locale) => {
-        return import(
-          /* webpackChunkName: "translation-[request]" */ `./translations/${locale}.json`
-        )
+      locales.map(locale => {
+        return import(`./translations/${locale}.json`)
           .then(({ default: data }) => {
             return {
               data: prefixPluginTranslations(data, pluginId),

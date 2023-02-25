@@ -1,12 +1,11 @@
 {
   "name": "melhorenvio",
   "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "description": "Simple UI with profile's data and button with a custom redirect link to Melhor Envio's register form, which is the previous step to get a new access token. The goal is: the admin won't need a developer to fix an expired refresh token.",
   "strapi": {
-    "name": "melhorenvio",
-    "description": "Description of Melhorenvio plugin",
-    "kind": "plugin",
-    "displayName": "Melhorenvio"
+    "name": "Melhor Envio",
+    "description": "Delivery quotations from Melhor Envio's Api",
+    "kind": "plugin"
   },
   "dependencies": {},
   "author": {
@@ -18,7 +17,7 @@
     }
   ],
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+    "node": ">=12.x. <=16.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"
