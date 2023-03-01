@@ -74,8 +74,7 @@
       "regex": "(\\d{5})-(\\d{3})",
       "required": true,
       "maxLength": 9,
-      "minLength": 9,
-      "private": true
+      "minLength": 9
     },
     "phone": {
       "type": "string",
