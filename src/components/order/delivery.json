@@ -24,13 +24,19 @@
       "type": "component",
       "repeatable": true,
       "component": "order.expected-dispatch-days",
-      "required": true
+      "required": false
     },
     "expectedArrivalDays": {
       "type": "component",
       "repeatable": true,
       "component": "order.expected-arrival-days",
-      "required": true
+      "required": false
+    },
+    "delivery_range": {
+      "displayName": "delivery_range",
+      "type": "component",
+      "repeatable": false,
+      "component": "order.delivery-range"
     }
   }
 }

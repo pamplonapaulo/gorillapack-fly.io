@@ -17,8 +17,8 @@ module.exports = {
       try {
         const cancelled = await strapi.entityService.update('api::order.order', orderID, {
           data: {
-            deactivated: true,
-            deactivationAuthor: 'customer',
+            blocked: true,
+            blockedBy: 'customer',
           },
         });
         return cancelled

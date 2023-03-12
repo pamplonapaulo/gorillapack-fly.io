@@ -60,7 +60,10 @@ module.exports = {
                   ],
                 });
 
+                console.log(orders)
+
                 const order = orders.pop()
+                console.log(order)
 
                 if (!order) {
                   return toEntityResponseCollection(null, {

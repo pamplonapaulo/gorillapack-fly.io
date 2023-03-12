@@ -19,22 +19,23 @@ module.exports = {
 
       let data = {
         user: users_permissions_user,
-        Title: 'Customizado',
+        title: 'Customizado',
         pack,
         snack,
         period,
         deliveries: {},
         address: {},
+        coupon: 1,
         expectedPayments: {
           absoluteDiscountApplied: 0,
-          finalValueInCentavos: 0,
+          finalValue: 0,
           monthsMultiplier: 0,
           contentCostBeforeDiscount: null
         },
         paymentIntent: '0',
         cardBrand: '0',
         cardLast4digits: '1234',
-        line_items: []
+        // line_items: []
       }
 
       let orderMath = {
@@ -47,10 +48,29 @@ module.exports = {
       }
 
       const saveOrderIntent = async () => {
+        data.period = period
+
+        data.deliveries.packingDetails = { packingDetails: data.deliveries.packingDetails }
+        // return data.deliveries
+        // return data
+        // console.log(typeof data.deliveries.fee)
+
+        data.deliveries.fee = data.deliveries.fee.toString()
+        // console.log(typeof data.deliveries.fee)
+        // data.deliveries.expectedArrivalDays = []
+        // data.deliveries.expectedDispatchDays = []
+
+        // data.deliveries = {
+
+        // }
+
+        // return data.deliveries.fee
+
         try {
           const order = await strapi.service('api::order.order').create({data})
           return order.id
         } catch(err) {
+          console.error(err)
           ctx.throw(err.status, err.message)
         }
       }
@@ -106,16 +126,13 @@ module.exports = {
       }
 
       const createStripeCheckoutSession = async () => {
-
-        console.log('data.deliveries')
-        console.log(data.deliveries)
-
         try {
           const session = await stripe.checkout.sessions.create({
             customer,
             mode: "subscription",
             currency: 'brl',
             payment_method_types: ['card'],
+            /*
             shipping_options: [
               {
                 shipping_rate_data: {
@@ -138,6 +155,7 @@ module.exports = {
                 }
               },
             ],
+            */
             line_items: data.line_items,
             success_url: `${process.env.FRONTEND_URL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${process.env.FRONTEND_URL}/canceled.html`,
@@ -164,7 +182,9 @@ module.exports = {
         })
         data.snack = products
 
-        return createStripeCheckoutSession() // needs Stripe account totally set
+        return saveOrderIntent()
+
+        //return createStripeCheckoutSession() // needs Stripe account totally set
         //return createStripeSchedule() // never tested
         //return getStripeIntent() // single payment was working at first tests
       }
@@ -240,10 +260,11 @@ module.exports = {
       const convertToCents = (num) => parseInt(num.toFixed(2).toString().replace(/(\d{1,})(\.)(\d{1,2})/g, '$1' + '$3'))
 
       const getExpectedPayments = () => {
-        // data.expectedPayments.contentCostBeforeDiscount = orderMath.snacksTotal
+        data.expectedPayments.contentCostBeforeDiscount = orderMath.snacksTotal
         // data.expectedPayments.finalValueInCentavos = convertToCents((orderMath.snacksTotal - orderMath.subscription.absoluteDiscount) + data.deliveries.fee)
-        data.expectedPayments.finalValueInCentavos = orderMath.snacksTotal + convertToCents(data.deliveries.fee)
+        data.expectedPayments.finalValue = orderMath.snacksTotal + convertToCents(data.deliveries.fee)
         data.deliveries.fee = parseInt(data.deliveries.fee.toString().replace('.',''))
+
         return handleCalendar()
       }
 
@@ -258,6 +279,7 @@ module.exports = {
         })
 
         data.deliveries = { ...deliveryData.quotation }
+
         data.address = {
           ...deliveryData.address,
           nome: data.address.nome,
@@ -280,10 +302,12 @@ module.exports = {
             const priceId = item.prices[data.period.name].priceId
 
             orderMath.snacksTotal += (snack.Quantity * price)
-            data.line_items.push({
-              price: priceId,
-              quantity: snack.Quantity,
-            })
+
+            // turn this off until stripe setup
+            // data.line_items.push({
+            //   price: priceId,
+            //   quantity: snack.Quantity,
+            // })
           })
         )
         orderMath.snacksTotal = orderMath.snacksTotal - (packDiscount * orderMath.snacksTotal)
@@ -307,7 +331,6 @@ module.exports = {
       }
 
       const getSnacksFromPack = async () => {
-
         const packData = await axios.post(process.env.BACKEND_URL + 'graphql', {
           query: `query packs {
             pack(id: ${pack}) {
@@ -335,7 +358,7 @@ module.exports = {
           }
         })
 
-        data.Title = packData.data.data.pack.data.attributes.Name
+        data.title = packData.data.data.pack.data.attributes.Name
 
         return getSubtotalFromSnacks(
           regroupSnacksProps(packData.data.data.pack.data.attributes.Item),
@@ -358,13 +381,12 @@ module.exports = {
           times: subscription.Multiplier
         }
 
-        // data.expectedPayments.monthsMultiplier = subscription.Multiplier
-        // orderMath.subscription.multiplier = subscription.Multiplier
-        // orderMath.subscription.percentualDiscount = subscription.Discount
-        // orderMath.subscription.absoluteDiscount = subscription.Discount * orderMath.snacksTotal
-        // data.expectedPayments.absoluteDiscountApplied = orderMath.subscription.absoluteDiscount
+        data.expectedPayments.monthsMultiplier = subscription.Multiplier
+        orderMath.subscription.multiplier = subscription.Multiplier
+        orderMath.subscription.percentualDiscount = subscription.Discount
+        orderMath.subscription.absoluteDiscount = subscription.Discount * orderMath.snacksTotal
+        data.expectedPayments.absoluteDiscountApplied = orderMath.subscription.absoluteDiscount
         //return getExpectedPayments()
-
 
         return handlePackType()
       }

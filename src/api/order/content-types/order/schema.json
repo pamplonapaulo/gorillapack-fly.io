@@ -21,7 +21,7 @@
       "type": "component",
       "repeatable": true,
       "component": "pack.item",
-      "required": true
+      "required": false
     },
     "pack": {
       "type": "relation",
@@ -30,9 +30,9 @@
     },
     "deliveries": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "order.delivery",
-      "required": true
+      "required": false
     },
     "address": {
       "type": "component",
@@ -47,7 +47,7 @@
     },
     "expectedPayments": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "order.expected-payments",
       "required": true
     },

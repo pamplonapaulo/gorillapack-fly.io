@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_order_delivery_ranges",
+  "info": {
+    "displayName": "delivery_range"
+  },
+  "options": {},
+  "attributes": {
+    "min": {
+      "type": "integer",
+      "required": true
+    },
+    "max": {
+      "type": "integer"
+    }
+  }
+}

@@ -237,6 +237,7 @@ module.exports = {
         } catch (error) {
           data = error.message
         }
+
         address = {
           cep: data.cep,
           logradouro: data.logradouro,
